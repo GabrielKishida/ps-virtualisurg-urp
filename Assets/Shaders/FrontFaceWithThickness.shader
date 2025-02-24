@@ -36,7 +36,7 @@ Shader "Custom/FrontFaceWithThickness"
                 float4 pos : SV_POSITION;
                 float2 uv: TEXCOORD0;
                 float4 worldPos: TEXCOORD1;
-                float4 screenPos : TEXCOORD2; // Store screen position
+                float4 screenPos : TEXCOORD2;
             };
 
             v2f vert(appdata v)
@@ -51,10 +51,8 @@ Shader "Custom/FrontFaceWithThickness"
             float4 frag(v2f i) : SV_Target
             {
                 float2 uv = i.screenPos.xy / i.screenPos.w;
-                float backFaceDistance = tex2D(_BackfaceDepthTexture, uv).r/5;
-                float frontFaceDistance = distance(i.worldPos, _WorldSpaceCameraPos)/5;
-                //return float4(backFaceDistance, backFaceDistance, backFaceDistance, backFaceDistance)/5;
-                //return float4(frontFaceDistance, frontFaceDistance, frontFaceDistance, frontFaceDistance)/5;
+                float backFaceDistance = tex2D(_BackfaceDepthTexture, uv).r;
+                float frontFaceDistance = distance(i.worldPos, _WorldSpaceCameraPos);
 
                 float thickness = (backFaceDistance - frontFaceDistance) * _ThicknessMultiplier;
                 return float4(1, 1, 1, thickness*5);
