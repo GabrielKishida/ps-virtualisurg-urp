@@ -1,14 +1,7 @@
 # Solução URP
 - Solução desenvolvida por Gabriel Kishida para o desafio de desenvolver um shader foto-realista de Raios X:
 
-![image](https://github.com/user-attachments/assets/48c8b0e2-3a90-42be-a8ca-ed4d93007dbc)
+![image](https://github.com/user-attachments/assets/17c375b7-4773-468e-858c-eb800c847af1)
 
-Esta solução faz a passagem da informação da profundidade entre os dois shaders por meio de uma única textura.
 
-Prós:
-- Mais leve;
-- Ocupa menos memória (apenas uma textura);
-- É possível de ser visualizada sem iniciar a simulação.
-
-Contras:
-- Não funciona bem quando se colocam dois objetos, um atrás do outro.
+Esta solução aplica dois Passes de um shader de distância (entre o ponto e a câmera), somando a distância do lado oposto da câmera e subtraindo a distância do lado mais próximo da câmera. Desta forma, obtém-se a "grossura" do objeto analisado.
