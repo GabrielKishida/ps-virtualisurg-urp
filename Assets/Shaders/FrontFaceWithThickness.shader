@@ -55,7 +55,6 @@ Shader "Custom/FrontFaceWithThickness"
                 float frontFaceDistance = distance(i.worldPos, _WorldSpaceCameraPos);
 
                 float thickness = (backFaceDistance - frontFaceDistance) * _ThicknessMultiplier;
-                return float4(1, 1, 1, thickness*5);
                 thickness = saturate(abs(thickness));
                 return float4(1.0, 1.0, 1.0, thickness);
             }

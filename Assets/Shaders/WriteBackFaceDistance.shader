@@ -6,7 +6,7 @@ Shader "Custom/WriteBackFaceDistance"
         Pass
         {
             Cull Front
-            ZTest Always
+            ZTest Less
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
